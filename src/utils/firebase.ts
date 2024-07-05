@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-import { getDatabase } from 'firebase/database';
+import { getDatabase, connectDatabaseEmulator } from 'firebase/database';
 import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
@@ -13,10 +13,15 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
+
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
-export const db = getDatabase(app);
+const db = getDatabase(app);
 export const storage = getStorage(app);
 
+if (location.hostname === "localhost") {
+  connectDatabaseEmulator(db, "127.0.0.1", 9000);
+} 
+export const database = db;
 export default app;

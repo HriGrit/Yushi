@@ -11,8 +11,8 @@ interface UploadImageProps {
 const UploadImage: React.FC<UploadImageProps> = ({user}) => {
     const [image, setImage] = React.useState<any>(null);
     const [imageUrl, setImageUrl] = React.useState<string | null>(null);
-    const [progress, setProgress] = React.useState<number | null>(0);
-    console.log(progress);
+    // const [progress, setProgress] = React.useState<number | null>(0);
+    // console.log(progress);
     
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files![0];
@@ -49,10 +49,8 @@ const UploadImage: React.FC<UploadImageProps> = ({user}) => {
           uploadTask.on('state_changed',
             (snapshot: any) => {
                     const amount = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                setProgress(amount);
-                toast((t) => {
-                    console.log(t);
-                    
+                // setProgress(amount);
+                toast(() => {
                     position: 'top-right'; 
                     return <span>
                         Uploading {Math.round(amount)}% done
@@ -61,13 +59,13 @@ const UploadImage: React.FC<UploadImageProps> = ({user}) => {
             },
             (error: any) => {
               toast.error('Upload failed: ' + error.message);
-              setProgress(0);
+            //   setProgress(0);
               reject(error);
             },
             () => {
               toast.success('Upload successful!');
-              setProgress(100);
-              console.log("success");
+            //   setProgress(100);
+            //   console.log("success");
               <Navigate to='/dashboard' />
               resolve();
             }
