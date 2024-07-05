@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { toast, Toaster } from 'react-hot-toast'
 import { storage } from '../../utils/firebase';
-import { ref, uploadBytesResumable, getDownloadURL, UploadTask } from 'firebase/storage';
+import { ref, uploadBytesResumable, UploadTask } from 'firebase/storage';
 import { Navigate } from 'react-router-dom';
 
 interface UploadImageProps {
@@ -12,7 +12,8 @@ const UploadImage: React.FC<UploadImageProps> = ({user}) => {
     const [image, setImage] = React.useState<any>(null);
     const [imageUrl, setImageUrl] = React.useState<string | null>(null);
     const [progress, setProgress] = React.useState<number | null>(0);
-
+    console.log(progress);
+    
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files![0];
         if (!(file && file.type.startsWith('image/'))) {
@@ -50,6 +51,8 @@ const UploadImage: React.FC<UploadImageProps> = ({user}) => {
                     const amount = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                 setProgress(amount);
                 toast((t) => {
+                    console.log(t);
+                    
                     position: 'top-right'; 
                     return <span>
                         Uploading {Math.round(amount)}% done

@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { getAuth, getRedirectResult, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signInWithRedirect } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth';
 import toast, { Toaster } from 'react-hot-toast';
 
 import logo from '../../assets/Logo.webp';
 import loginImage from '../../assets/Login2.webp';
-import { Navigate } from 'react-router-dom';
+// import { Navigate } from 'react-router-dom';
 import UploadImage from './UploadImage';
 import { auth } from '../../utils/firebase';
 import Loader from '../../components/Loader';
 
 const Login: React.FC = () => {
   const [user, setUser] = useState<any>(null);
-  const [error, setError] = useState<string | null>(null);
+  // const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
