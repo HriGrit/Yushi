@@ -8,14 +8,11 @@ const fetchUserData = async (userId: string) => {
 
     if (snapshot.exists()) {
       const userData = snapshot.val();
-      console.log('User data fetched:', userData);
       return userData;
     } else {
-    //   console.log('No data available');
       return null;
     }
   } catch (error: any) {
-    // console.error('Error fetching user data:', error);
     return null;
   }
 };

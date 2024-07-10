@@ -21,7 +21,6 @@ const Login: React.FC = () => {
     const navigate = useNavigate();
     console.log(navigate);
     
-
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {

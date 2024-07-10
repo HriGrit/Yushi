@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/Contacts/Navbar';
 import { UserState } from '../../store/userSlice';
 import fetchUserData from '../../utils/fetchUserData';
-import AddContact from '../../components/Contacts/AddContact';
 import ContactList from '../../components/Contacts/ContactList';
+import { Navigate } from 'react-router-dom';
 
 interface ContactsProps {
   user: UserState;
@@ -22,13 +22,11 @@ const Contacts: React.FC<ContactsProps> = ({ user }) => {
     getUserData();
   }, [user.id]);
 
-  console.log(userData === null);
-
   return (
     <div className='bg-primary-500 h-screen'>
       <Navbar />
       {userData === null ? (
-        <AddContact />
+        <Navigate to='/profile' />
       ) : (
         <ContactList data={userData} />
       )}

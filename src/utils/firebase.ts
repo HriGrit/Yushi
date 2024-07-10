@@ -11,6 +11,7 @@ const firebaseConfig = {
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
+  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE,
 };
 
 
@@ -20,11 +21,11 @@ export const auth = getAuth(app);
 const db = getDatabase(app);
 export const storage = getStorage(app);
 
-if (location.hostname === "localhost") {
-  connectDatabaseEmulator(db, "127.0.0.1", 9000);
-  connectAuthEmulator(auth, "http://127.0.0.1:9099");
-  connectStorageEmulator(storage, "127.0.0.1", 9199);
-} 
+// if (location.hostname === "localhost") {
+//   connectDatabaseEmulator(db, "127.0.0.1", 9000);
+//   connectAuthEmulator(auth, "http://127.0.0.1:9099");
+//   connectStorageEmulator(storage, "127.0.0.1", 9199);
+// } 
 
 export const database = db;
 

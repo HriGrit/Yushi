@@ -9,6 +9,7 @@ import Login from './pages/Auth/Login';
 import NotFound from './pages/Extras/PageNotFound'
 import ComingSoon from './pages/Extras/BuildingNow'
 import Body from './pages/Chat/Body'
+import ProfileBody from './pages/Profile/ProfileBody';
 
 function App() {
   const [isAuthenticated] = useAuthState(auth);
@@ -17,13 +18,19 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        {/* <Route path="/land" element={<Land />} /> */}
         <Route
           path="/dashboard"
           element={
             <ProtectedRoute isAuthenticated={isAuthenticated ? true : false}>
-              {/* <Home /> */}
               <Body />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute isAuthenticated={isAuthenticated ? true : false}>
+              <ProfileBody />
             </ProtectedRoute>
           }
         />
