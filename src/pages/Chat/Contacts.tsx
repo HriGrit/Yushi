@@ -1,35 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Navbar from '../../components/Contacts/Navbar';
 import { UserState } from '../../store/userSlice';
-import fetchUserData from '../../utils/fetchUserData';
 import ContactList from '../../components/Contacts/ContactList';
-import { Navigate } from 'react-router-dom';
+import { database } from '../../utils/firebase';
+import { get, ref } from 'firebase/database';
 
 interface ContactsProps {
   user: UserState;
 }
 
 const Contacts: React.FC<ContactsProps> = ({ user }) => {
-  const [userData, setUserData] = useState<any>(null);
 
-  useEffect(() => {
-    const getUserData = async () => {
-      if (user.id) {
-        const data = await fetchUserData(user.id);
-        setUserData(data);
+  const fetchFriends = async(id: string) => {
+    try{
+      const userRequestsRef = ref(database, `requests/${id}`);
+      const snapshot = await get(userRequestsRef);
+      
+      if (snapshot.exists()) {
+        const userRequestsData = snapshot.val();
+        console.log(userRequestsData);
+        
       }
-    };
-    getUserData();
-  }, [user.id]);
+    }catch (error){
+
+    }
+  } 
 
   return (
     <div className='bg-primary-500 h-screen'>
       <Navbar />
-      {userData === null ? (
-        <Navigate to='/profile' />
-      ) : (
-        <ContactList data={userData} />
-      )}
+      <ContactList data={"hi"} />
     </div>
   );
 };

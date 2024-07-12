@@ -9,7 +9,7 @@ interface FeaturesProps {
 }
 
 const Features:React.FC<FeaturesProps> = ({showInput, setShowInput, showFriends, setFriends}) => {
-    const[friendRequest, setFriendRequest] = React.useState(0);
+    const friendRequest = 0;
 
     return (
         <div className="p-6 bg-white mx-auto mt-8 flex flex-col items-center">

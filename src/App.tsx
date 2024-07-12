@@ -1,9 +1,6 @@
-// import React, {Suspense, lazy} from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from './utils/firebase' 
-// import Land from './pages/Home/Land'
-// import Home from './pages/Home/Home'
 import ProtectedRoute from './components/ProtectedRoute'
 import Login from './pages/Auth/Login';
 import NotFound from './pages/Extras/PageNotFound'
@@ -21,17 +18,19 @@ function App() {
         <Route
           path="/dashboard"
           element={
-            <ProtectedRoute isAuthenticated={isAuthenticated ? true : false}>
-              <Body />
-            </ProtectedRoute>
+            <ComingSoon />
+            // <ProtectedRoute isAuthenticated={isAuthenticated ? true : false}>
+            //   <Body />
+            // </ProtectedRoute>
           }
         />
         <Route
           path="/profile"
           element={
-            <ProtectedRoute isAuthenticated={isAuthenticated ? true : false}>
-              <ProfileBody />
-            </ProtectedRoute>
+            <ComingSoon />
+            // <ProtectedRoute isAuthenticated={isAuthenticated ? true : false}>
+            //   <ProfileBody />
+            // </ProtectedRoute>
           }
         />
         <Route path="/coming-soon" element={<ComingSoon />} />

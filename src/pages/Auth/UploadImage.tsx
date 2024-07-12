@@ -174,7 +174,7 @@ interface UploadImageProps {
 const UploadImage: React.FC<UploadImageProps> = ({ user }) => {
     const [image, setImage] = React.useState<any>(null);
     const [imageUrl, setImageUrl] = React.useState<string | null>(null);
-    const [name, setName] = React.useState<string>(user.displayName.replace(/\s+/g, ''));
+    const [name, setName] = React.useState<string>(user.displayName.replace(/[\S]/g, ''));
     const [error, setError] = React.useState<string | null>(null);
 
     const navigate = useNavigate();

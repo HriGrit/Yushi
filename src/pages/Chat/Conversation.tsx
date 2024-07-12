@@ -5,9 +5,7 @@ interface ConversationProps {
   user: UserState;
 }
 
-const Conversation: React.FC<ConversationProps> = ({user}) => {
-  console.log(user);
-  
+const Conversation: React.FC<ConversationProps> = ({user}) => {  
   return (
     <div className='bg-primary-100 h-screen'>
         hi

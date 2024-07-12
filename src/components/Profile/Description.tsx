@@ -25,7 +25,7 @@ interface Uid {
   user: string;
 }
 
-const Description: React.FC<FeaturesProps> = ({ user, showInput, setShowInput, showFriends, setFriends }) => {
+const Description: React.FC<FeaturesProps> = ({ user, showInput, showFriends }) => {
   const [uids, setUids] = useState<Uid[]>([]);
   const [userData, setUserData] = useState<Data[]>([]);
   const [email, setEmail] = useState('');
@@ -173,7 +173,7 @@ const Description: React.FC<FeaturesProps> = ({ user, showInput, setShowInput, s
   }
 
   const HandleAcceptRequest = (userId: string) =>{
-    console.log(userId);
+    // console.log(userId);
     
     return () => handleAccept(userId);
   };

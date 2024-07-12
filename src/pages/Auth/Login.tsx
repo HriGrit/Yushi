@@ -18,8 +18,8 @@ const Login: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(true);
     const [loadingImage, setLoadingImage] = useState<boolean>(false);
 
-    const navigate = useNavigate();
-    console.log(navigate);
+    // const navigate = useNavigate();
+    // console.log(navigate);
     
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -39,13 +39,12 @@ const Login: React.FC = () => {
     const checkIfUserHasProfileImage = async (user: any) => {
         setLoadingImage(true);
         try {
-            const databaseRef = docRef(database, `users/${user?.uid}`);
-            get(databaseRef).then((snapshot) => {
-                if (snapshot.exists()) {     
+            const contactRef = docRef(database, `contacts/${user?.uid}`);
+            get(contactRef).then((snapshot) => {
+                if (snapshot.exists())
                     setExistingUser(true);
-                } else {
+                else
                     setExistingUser(false);
-                }
             });
         } catch (error) {
             setExistingUser(false);
