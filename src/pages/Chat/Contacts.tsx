@@ -2,29 +2,29 @@ import React from 'react';
 import Navbar from '../../components/Contacts/Navbar';
 import { UserState } from '../../store/userSlice';
 import ContactList from '../../components/Contacts/ContactList';
-import { database } from '../../utils/firebase';
-import { get, ref } from 'firebase/database';
+// import { database } from '../../utils/firebase';
+// import { get, ref } from 'firebase/database';
 
 interface ContactsProps {
   user: UserState;
 }
 
-const Contacts: React.FC<ContactsProps> = ({ user }) => {
+const Contacts: React.FC<ContactsProps> = () => {
 
-  const fetchFriends = async(id: string) => {
-    try{
-      const userRequestsRef = ref(database, `requests/${id}`);
-      const snapshot = await get(userRequestsRef);
+  // const fetchFriends = async(id: string) => {
+  //   try{
+  //     const userRequestsRef = ref(database, `requests/${id}`);
+  //     const snapshot = await get(userRequestsRef);
       
-      if (snapshot.exists()) {
-        const userRequestsData = snapshot.val();
-        console.log(userRequestsData);
+  //     if (snapshot.exists()) {
+  //       const userRequestsData = snapshot.val();
+  //       console.log(userRequestsData);
         
-      }
-    }catch (error){
+  //     }
+  //   }catch (error){
 
-    }
-  } 
+  //   }
+  // } 
 
   return (
     <div className='bg-primary-500 h-screen'>

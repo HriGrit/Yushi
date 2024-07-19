@@ -2,7 +2,7 @@ import React, { useEffect, useState, lazy } from 'react';
 import { Toaster, toast } from 'react-hot-toast';
 import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth';
 import { auth } from '../../utils/firebase';
-import { useNavigate, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { database } from '../../utils/firebase';
 import { ref as docRef, get } from 'firebase/database';
 
