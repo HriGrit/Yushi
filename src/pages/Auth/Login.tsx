@@ -9,6 +9,7 @@ import { ref as docRef, get } from 'firebase/database';
 import logo from '../../assets/Logo.webp';
 import loginImage from '../../assets/Login2.webp';
 import Loader from '../../components/Loader';
+import TypingAnim from '../../components/Home/TypingAnimation';
 
 const UploadImage = lazy(() => import('./UploadImage'));
 
@@ -39,7 +40,7 @@ const Login: React.FC = () => {
     const checkIfUserHasProfileImage = async (user: any) => {
         setLoadingImage(true);
         try {
-            const contactRef = docRef(database, `contacts/${user?.uid}`);
+            const contactRef = docRef(database, `users/${user?.uid}`);
             get(contactRef).then((snapshot) => {
                 if (snapshot.exists())
                     setExistingUser(true);
@@ -93,15 +94,19 @@ const Login: React.FC = () => {
                         <div className="text-center">
                             <h1 className="text-4xl font-bold text-primary-500 mb-2">Login Page</h1>
                             <h2 className="text-2xl text-primary-500 mb-6">Welcome to Messenger Yushi</h2>
+                            <div className='flex justify-center gap-2 mb-4 text-xl text-primary-600'>
+                                <h2>It's</h2>
+                                <TypingAnim words={['Free', 'Secure', 'Easy to use']} />
+                            </div>
                             <div className="mb-4 font-semibold">
                                 <h3 className="text-xl mb-2 text-gray-900 dark:text-primary-300">
                                     Instantly establish communication with your loved ones using Messenger Yushi
                                 </h3>
                             </div>
                             <img src={loginImage} alt="Login Stock Img" className="mx-auto mb-4" />
-                            <div className="mb-8">
-                                <h3 className="text-lg text-center text-primary-300">
-                                    Free from all distractions and enjoy the moment
+                            <div className="mb-4">
+                                <h3 className="text-lg text-center text-primary-500">
+                                    Try now!! Login with your Google account
                                 </h3>
                             </div>
                             <button

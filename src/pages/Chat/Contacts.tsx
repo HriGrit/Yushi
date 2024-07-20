@@ -6,30 +6,15 @@ import ContactList from '../../components/Contacts/ContactList';
 // import { get, ref } from 'firebase/database';
 
 interface ContactsProps {
-  user: UserState;
+  users: UserState;
 }
 
-const Contacts: React.FC<ContactsProps> = () => {
-
-  // const fetchFriends = async(id: string) => {
-  //   try{
-  //     const userRequestsRef = ref(database, `requests/${id}`);
-  //     const snapshot = await get(userRequestsRef);
-      
-  //     if (snapshot.exists()) {
-  //       const userRequestsData = snapshot.val();
-  //       console.log(userRequestsData);
-        
-  //     }
-  //   }catch (error){
-
-  //   }
-  // } 
+const Contacts: React.FC<ContactsProps> = ({users}) => {
 
   return (
     <div className='bg-primary-500 h-screen'>
       <Navbar />
-      <ContactList data={"hi"} />
+      <ContactList data={users} />
     </div>
   );
 };

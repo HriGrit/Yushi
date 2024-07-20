@@ -3,7 +3,7 @@ import { database } from './firebase';
 
 const fetchUserData = async (userId: string) => {
   try {
-    const userRef = dbref(database, `contacts/${userId}`);
+    const userRef = dbref(database, `friends/${userId}`);
     const snapshot = await get(userRef);
 
     if (snapshot.exists()) {

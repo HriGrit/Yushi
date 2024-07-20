@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 import useAuthListener from "../../utils/useAuthListener"
 import Contacts from "./Contacts"
 import Conversation from "./Conversation"
-import { RootState } from "../../store/store";
 import { useEffect, useState } from "react";
 import fetchUserData from '../../utils/fetchUserData';
 import { Navigate } from 'react-router-dom';
@@ -24,7 +24,6 @@ const Body = () => {
     };
     getUserData();
   }, [user.id]);
-  console.log(fetched);
   
   return (
     <div className="flex h-screen">
@@ -33,7 +32,7 @@ const Body = () => {
         ) : (
           <>
             <div className="w-1/4">
-                <Contacts user={user}/>
+                <Contacts users={userData}/>
             </div>
             <div className="w-3/4">
                 <Conversation user={user}/>
