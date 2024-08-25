@@ -13,7 +13,8 @@ interface TextAreaProps {
 const TextArea: React.FC<TextAreaProps> = ({user}) => {
     const [loading, setLoading] = React.useState<boolean>(true);
     const [newConvo, setNewConvo] = React.useState<boolean>(true);
-
+    console.log(loading);
+    
     useEffect(() => {
         async function fetchConvo(id: string) {
             const convoRef = ref(database, `conversations/${id}`);
