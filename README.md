@@ -10,5 +10,7 @@ Tested on the offline firebase emulator to save some cloud reasources.
 
 Select a selected few people to converse with and go on ahead after they accept ur invititation.
 
+Website under development, preview it as I go along the journey.
+
 https://messengeryushi.web.app
 
